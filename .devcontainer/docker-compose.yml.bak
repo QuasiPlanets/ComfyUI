@@ -1,0 +1,27 @@
+services:
+  limn_nivean_comfyui:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - ~/.cache/pip:/home/vscode/.cache/pip
+      #- ~/.comfyui_models:/workspace/models
+    environment:
+      - PYTHONPATH=/workspace
+      - PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+    command: sleep infinity
+    networks:
+      - limn_nivean_network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+networks:
+  limn_nivean_network:
+    external: true
+    name: limn_nivean_network 
