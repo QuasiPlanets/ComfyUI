@@ -1,0 +1,6 @@
+parler-tts
+transformers>=4.36.0
+torchaudio
+torch>=2.0.0
+numpy
+soundfile 
