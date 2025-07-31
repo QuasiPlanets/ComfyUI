@@ -1,0 +1,32 @@
+{
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ParlerTTSNode",
+      "pos": [100, 100],
+      "size": {"0": 300, "1": 400},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": {},
+      "title": "Parler-TTS Generator",
+      "properties": {},
+      "widgets_values": [
+        "Hello, test!",
+        "A female speaker with a clear voice.",
+        "parler-tts/parler-tts-mini-v1",
+        50,
+        1.0,
+        0.9,
+        50
+      ]
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+} 

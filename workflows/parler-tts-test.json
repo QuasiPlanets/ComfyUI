@@ -1,0 +1,62 @@
+{
+  "last_node_id": 4,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ParlerTTSNode",
+      "pos": [100, 100],
+      "size": {"0": 300, "1": 400},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": {
+        "text": "Hello, this is a test of Parler-TTS!",
+        "description": "A female speaker with a clear, natural voice speaking at a moderate pace.",
+        "model_name": "parler-tts/parler-tts-mini-v1",
+        "max_length": 50,
+        "temperature": 1.0,
+        "top_p": 0.9,
+        "top_k": 50
+      },
+      "title": "Parler-TTS Generator",
+      "properties": {},
+      "widgets_values": [
+        "Hello, this is a test of Parler-TTS!",
+        "A female speaker with a clear, natural voice speaking at a moderate pace.",
+        "parler-tts/parler-tts-mini-v1",
+        50,
+        1.0,
+        0.9,
+        50
+      ]
+    },
+    {
+      "id": 2,
+      "type": "PreViewAudio",
+      "pos": [450, 200],
+      "size": {"0": 200, "1": 100},
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": {},
+      "title": "Preview Audio",
+      "properties": {},
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    {
+      "id": 1,
+      "origin_id": 1,
+      "origin_slot": 0,
+      "target_id": 2,
+      "target_slot": 0,
+      "link_type": 0
+    }
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+} 
