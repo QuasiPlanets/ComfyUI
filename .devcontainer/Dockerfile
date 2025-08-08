@@ -16,6 +16,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/bin/python3 /usr/bin/python
 
+# Install Node.js for WhisperX custom node translation features
+#RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+ #  && apt-get clean \
+ #   && rm -rf /var/lib/apt/lists/*
+ #
 # Create a non-root user
 ARG USERNAME=vscode
 ARG USER_UID=1000

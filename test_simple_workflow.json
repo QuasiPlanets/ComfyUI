@@ -1,0 +1,50 @@
+{
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "SimpleLiveTranscription",
+      "pos": [100, 100],
+      "size": {"0": 300, "1": 400},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "transcription",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "live_display_html", 
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SimpleLiveTranscription"
+      },
+      "widgets_values": [
+        "large-v3",
+        "cuda",
+        "en",
+        0.0,
+        8189,
+        "Live Transcription",
+        16,
+        "#000000",
+        "#00FF00",
+        "Click microphone button to start recording..."
+      ]
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+} 

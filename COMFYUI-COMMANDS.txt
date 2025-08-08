@@ -1,0 +1,10 @@
+## COMFYUI COMMANDS
+
+# Kill all ComfyUI instances
+pkill -f "python main.py" && sleep 2 && echo "All ComfyUI instances killed"
+
+# Start ComfyUI with CORS enabled
+python main.py --listen 0.0.0.0 --port 8188 --enable-cors-header
+
+# Start ComfyUI with additional options
+python main.py --listen 0.0.0.0 --port 8188 --enable-cors-header --preview-method auto
