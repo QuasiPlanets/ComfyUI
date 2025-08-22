@@ -162,6 +162,25 @@ If the system breaks:
 4. Restore from last known working commit
 5. Document the issue and resolution
 
+## Repository Verification Process
+
+### Post-Commit Verification
+After all commits are complete, verify each repository:
+
+```bash
+# For each repository, check:
+git branch          # Should show develop-speech as current
+git remote -v       # Should point to correct remote
+git status          # Should be clean
+```
+
+### Verification Checklist
+- [ ] All repositories on `develop-speech` branches
+- [ ] All remotes correctly configured
+- [ ] All changes committed and pushed
+- [ ] No uncommitted changes remaining
+- [ ] Documentation updated
+
 ## Integration Testing
 After commits:
 1. Clone fresh repositories
@@ -170,5 +189,8 @@ After commits:
 4. Test speech functionality
 5. Verify all components work together
 6. Document any integration issues
+
+## Repository Status Documentation
+See `.cursor/GIT_REPOSITORY_VERIFICATION.md` for detailed verification status and repository configurations.
 
 This guide ensures the speech system remains 100% reproducible and operational across all development cycles.

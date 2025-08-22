@@ -61,6 +61,12 @@ This is a ComfyUI development environment with live WhisperX transcription capab
 ├── CUSTOM_NODES_GUIDE.md              # Custom node documentation
 ├── WEBSOCKET_INTEGRATION.md            # Real-time communication guide
 ├── ELIZAOS_INTEGRATION.md              # External system integration
+├── COMMIT_MANAGEMENT_GUIDE.md          # Commit strategy and best practices
+├── REPOSITORY_MAPPING.md               # File distribution and commit process
+├── SPEECH_SYSTEM_STATE.md              # Current operational state
+├── COMMIT_EXECUTION_PLAN.md            # Step-by-step commit instructions
+├── CURSOR_DIRECTORY_COMMIT_GUIDE.md    # .cursor directory management
+├── GIT_REPOSITORY_VERIFICATION.md      # Repository status and verification
 └── custom_nodes/
     └── ComfyUI-WhisperX/
         ├── README.md                   # WhisperX specific documentation
