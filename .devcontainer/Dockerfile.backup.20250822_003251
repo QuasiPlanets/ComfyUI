@@ -18,20 +18,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/bin/python3 /usr/bin/python
 
-# Install cuDNN 8.9 for CUDA 12.1 compatibility
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends \
-    libcudnn8=8.9.*-1+cuda12.1 \
-    libcudnn8-dev=8.9.*-1+cuda12.1 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Set CUDA and cuDNN environment variables
-ENV CUDA_HOME=/usr/local/cuda
-ENV PATH=${CUDA_HOME}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
-ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
-
+# Install Node.js for WhisperX custom node translation features
+#RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+ #  && apt-get clean \
+ #   && rm -rf /var/lib/apt/lists/*
+ #
 # Create a non-root user
 ARG USERNAME=vscode
 ARG USER_UID=1000
@@ -48,6 +39,28 @@ RUN groupadd --gid $USER_GID $USERNAME \
 COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
     && rm -rf /tmp/pip-tmp
+
+# Install additional dependencies added during TTS development
+# These are commented out for now but can be uncommented when needed
+
+# Python packages we installed during development
+# RUN pip3 install --no-cache-dir \
+#     # TTS framework (required for XTTS custom node)
+#     TTS>=0.22.0 \
+#     # Parler-TTS (required for Parler-TTS custom node)
+#     parler-tts>=0.2.3 \
+#     # Performance optimization for TTS models
+#     accelerate>=0.26.0 \
+#     # Flash attention for performance (optional)
+#     flash-attn
+
+# System packages we installed during development
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends \
+#     # Audio processing for TTS
+#     ffmpeg \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /workspace
