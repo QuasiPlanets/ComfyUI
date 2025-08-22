@@ -3,6 +3,9 @@
 ## Overview
 This guide ensures that all `.cursor/` directories are properly committed to their respective repositories. These directories contain critical documentation for future LLMs and must never be ignored.
 
+**⚠️ CRITICAL: This guide should ONLY be executed with EXPLICIT USER PERMISSION.**
+**⚠️ NEVER execute git operations without asking the user first.**
+
 ## Critical Requirements
 
 ### 1. .cursor Directories Must Be Committed
@@ -166,12 +169,21 @@ venv/
 
 When working with this system:
 
-1. **Always check for .cursor directories** before making changes
-2. **Never exclude .cursor from commits** - these contain critical documentation
-3. **Update .cursor documentation** when making significant changes
-4. **Preserve state information** in .cursor directories
-5. **Follow commit guides** stored in .cursor directories
-6. **Maintain documentation** for future development cycles
+1. **NEVER use git commands unless explicitly asked by the user**
+2. **ALWAYS ask for user permission before making any commits**
+3. **ALWAYS confirm the user wants to proceed with git operations**
+4. **Always check for .cursor directories** before making changes
+5. **Never exclude .cursor from commits** - these contain critical documentation
+6. **Update .cursor documentation** when making significant changes
+7. **Preserve state information** in .cursor directories
+8. **Follow commit guides** stored in .cursor directories
+9. **Maintain documentation** for future development cycles
+
+### Critical Safety Rules:
+- **NEVER execute git commands without explicit user request**
+- **ALWAYS ask "Do you want me to commit these changes?" before proceeding**
+- **NEVER assume the user wants commits made automatically**
+- **ALWAYS explain what git operations will be performed before executing them**
 
 ## Emergency Procedures
 

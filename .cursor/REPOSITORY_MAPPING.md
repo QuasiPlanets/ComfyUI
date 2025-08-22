@@ -76,6 +76,9 @@ ComfyUI/
 
 ## Commit Process Flow
 
+**⚠️ IMPORTANT: These instructions should ONLY be executed with EXPLICIT USER PERMISSION.**
+**⚠️ ALWAYS ask the user before executing any git commands.**
+
 ### Phase 1: Custom Node Preparation
 For each custom node repository:
 

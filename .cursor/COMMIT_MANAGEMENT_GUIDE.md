@@ -147,12 +147,21 @@ If issues arise:
 
 ## Cursor LLM Instructions
 When working with this system:
-1. Always check current branch before making changes
-2. Follow the commit order (custom nodes first, main repo last)
-3. Use descriptive commit messages with state information
-4. Verify operational state before committing
-5. Document any deviations from this guide
-6. Maintain the exact working state at all times
+1. **NEVER use git commands unless explicitly asked by the user**
+2. **ALWAYS ask for user permission before making any commits**
+3. **ALWAYS confirm the user wants to proceed with git operations**
+4. Always check current branch before making changes
+5. Follow the commit order (custom nodes first, main repo last)
+6. Use descriptive commit messages with state information
+7. Verify operational state before committing
+8. Document any deviations from this guide
+9. Maintain the exact working state at all times
+
+### Critical Safety Rules:
+- **NEVER execute git commands without explicit user request**
+- **ALWAYS ask "Do you want me to commit these changes?" before proceeding**
+- **NEVER assume the user wants commits made automatically**
+- **ALWAYS explain what git operations will be performed before executing them**
 
 ## Emergency Procedures
 If the system breaks:

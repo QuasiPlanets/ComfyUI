@@ -67,6 +67,7 @@ This is a ComfyUI development environment with live WhisperX transcription capab
 ├── COMMIT_EXECUTION_PLAN.md            # Step-by-step commit instructions
 ├── CURSOR_DIRECTORY_COMMIT_GUIDE.md    # .cursor directory management
 ├── GIT_REPOSITORY_VERIFICATION.md      # Repository status and verification
+├── LLM_SAFETY_GUIDELINES.md            # Critical safety rules for LLMs
 └── custom_nodes/
     └── ComfyUI-WhisperX/
         ├── README.md                   # WhisperX specific documentation

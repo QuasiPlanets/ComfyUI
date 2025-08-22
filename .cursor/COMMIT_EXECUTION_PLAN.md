@@ -3,11 +3,15 @@
 ## Overview
 This plan provides step-by-step instructions to commit all current changes to `develop-speech` branches across all repositories, ensuring 100% reproducibility of the current operational state.
 
+**⚠️ CRITICAL: This plan should ONLY be executed with EXPLICIT USER PERMISSION.**
+**⚠️ NEVER execute git operations without asking the user first.**
+
 ## Prerequisites
 - All repositories cloned and accessible
 - Current working state verified and operational
 - Git credentials configured for all repositories
 - Network access to push to remote repositories
+- **EXPLICIT USER PERMISSION** to execute git operations
 
 ## .cursor Directory Requirements
 - All `.cursor/` directories MUST be committed
