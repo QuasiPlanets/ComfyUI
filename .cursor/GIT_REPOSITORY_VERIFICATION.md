@@ -13,7 +13,7 @@ This document verifies that all repositories are correctly configured on `develo
 **Location**: `/home/tes/ComfyUI`
 **Current Branch**: `develop-speech` ✅
 **Remotes**:
-- `origin`: `git@github.com:QuasiPlanets/ComfyUI-XTTS.git` (incorrect - should be ComfyUI)
+- `origin`: `git@github.com:QuasiPlanets/ComfyUI.git` ✅
 - `quasiplanets`: `git@github.com:QuasiPlanets/ComfyUI.git` ✅
 **Available Branches**: develop, develop-speech*, feature/live-node, feature/tts-custom-nodes, feature/tts-custom-nodes-eliza-XTTS-pair, master
 
@@ -77,10 +77,12 @@ git ls-remote origin develop-speech
 
 ## Issues Identified
 
-### ⚠️ Main ComfyUI Remote Configuration
-**Issue**: The `origin` remote points to ComfyUI-XTTS instead of ComfyUI
-**Impact**: Low - using `quasiplanets` remote for main repository operations
-**Recommendation**: Fix origin remote if needed for future operations
+### ✅ Main ComfyUI Remote Configuration
+**Status**: Fixed - `origin` remote now correctly points to ComfyUI repository
+**Configuration**: 
+- `origin`: `git@github.com:QuasiPlanets/ComfyUI.git` ✅
+- `quasiplanets`: `git@github.com:QuasiPlanets/ComfyUI.git` ✅
+**Impact**: Both remotes now point to correct repository
 
 ## Future Development Guidelines
 
@@ -93,8 +95,10 @@ git ls-remote origin develop-speech
 
 ### Repository Operations
 ```bash
-# Main ComfyUI operations
+# Main ComfyUI operations (both remotes work)
+git push origin develop-speech
 git push quasiplanets develop-speech
+git pull origin develop-speech
 git pull quasiplanets develop-speech
 
 # Custom node operations
