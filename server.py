@@ -191,8 +191,10 @@ class PromptServer():
 
         @routes.get('/ws')
         async def websocket_handler(request):
+            logging.info(f"[WebSocket] New connection attempt from {request.remote}")
             ws = web.WebSocketResponse()
             await ws.prepare(request)
+            logging.info(f"[WebSocket] Connection prepared successfully")
             sid = request.rel_url.query.get('clientId', '')
             if sid:
                 # Reusing existing session, remove old
@@ -215,29 +217,47 @@ class PromptServer():
                 # Flag to track if we've received the first message
                 first_message = True
 
+                logging.info(f"[WebSocket] Starting message loop for connection from {request.remote}")
                 async for msg in ws:
+                    logging.debug(f"[WebSocket] Received message type: {msg.type}")
                     if msg.type == aiohttp.WSMsgType.ERROR:
                         logging.warning('ws connection closed with exception %s' % ws.exception())
                     elif msg.type == aiohttp.WSMsgType.TEXT:
                         try:
                             data = json.loads(msg.data)
-                            # Check if first message is feature flags
-                            if first_message and data.get("type") == "feature_flags":
-                                # Store client feature flags
-                                client_flags = data.get("data", {})
-                                self.sockets_metadata[sid]["feature_flags"] = client_flags
+                            logging.debug(f"[WebSocket] Parsed JSON data type: {data.get('type', 'unknown')}")
+                            
+                            # Check if this is a WhisperX message
+                            if data.get('type', '').startswith('whisperx_'):
+                                # Handle WhisperX messages
+                                try:
+                                    # Import WhisperX integration if available
+                                    from whisperx_comfyui_integration import get_whisperx_integration
+                                    whisperx_integration = get_whisperx_integration()
+                                    await whisperx_integration.handle_whisperx_message(ws, data, sid)
+                                    logging.info(f"[WhisperX] Processed message: {data.get('type')}")
+                                except ImportError:
+                                    logging.warning("[WhisperX] WhisperX integration not available")
+                                except Exception as e:
+                                    logging.error(f"[WhisperX] Error processing message: {e}")
+                            else:
+                                # Check if first message is feature flags
+                                if first_message and data.get("type") == "feature_flags":
+                                    # Store client feature flags
+                                    client_flags = data.get("data", {})
+                                    self.sockets_metadata[sid]["feature_flags"] = client_flags
 
-                                # Send server feature flags in response
-                                await self.send(
-                                    "feature_flags",
-                                    feature_flags.get_server_features(),
-                                    sid,
-                                )
+                                    # Send server feature flags in response
+                                    await self.send(
+                                        "feature_flags",
+                                        feature_flags.get_server_features(),
+                                        sid,
+                                    )
 
-                                logging.info(
-                                    f"Feature flags negotiated for client {sid}: {client_flags}"
-                                )
-                            first_message = False
+                                    logging.info(
+                                        f"Feature flags negotiated for client {sid}: {client_flags}"
+                                    )
+                                first_message = False
                         except json.JSONDecodeError:
                             logging.warning(
                                 f"Invalid JSON received from client {sid}: {msg.data}"
